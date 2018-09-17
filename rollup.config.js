@@ -10,9 +10,9 @@ export default {
     format: 'iife',
   },
   plugins: [
+    typescript(),
     resolve(),
     commonjs(),
-    typescript(),
     scss({
       output: 'build/app.css',
     })
