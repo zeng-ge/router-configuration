@@ -1,0 +1,32 @@
+.panel{
+  border-radius: 10px;
+  box-shadow: 0 0 12px 0 transparentize(#000000, 0.9);
+
+  .panel-header{
+    height: 50px;
+    padding: 16px 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: transparentize(#1890FF, 0.8);
+    font-size: 0;
+    .panel-icon{
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      vertical-align: middle;
+    }
+    .panel-title{
+      margin-left: 12px;
+      font-size: 16px;
+      vertical-align: middle;
+    }
+  }
+  .panel-body{
+    padding: 0 40px;
+    min-height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}

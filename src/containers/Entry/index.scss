@@ -1,0 +1,111 @@
+$width: 1240px;
+.router-wrap{
+  .router-container{
+    position: relative;
+    width: $width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .router-header{
+    position: relative;
+    height: 80px;
+    padding-top: 32px;
+    background-color: #2881DA;
+    .router-header-line{
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: transparentize(#fff, 0.9)
+    }
+    .router-menu{
+      font-size: 0;
+      .router-menu-item{
+        display: inline-block;
+        box-sizing: content-box;
+        width: 64px;
+        padding: 0 24px;
+        font-size: 14px;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        &:first-child{
+          padding-left: 0;
+        }
+        &:last-child{
+          padding-right: 0;
+          .router-menu-item-content{
+            &::after{
+              content: none;
+            }
+          }
+        }
+        &.active{
+          .router-menu-item-content{
+            padding-bottom: 8px;
+            border-bottom: 3px solid white;
+          }
+        }
+        .router-menu-item-content{
+          position: relative;
+          &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -24px;
+            width: 1px;
+            height: 12px;
+            background-color: white;
+          }
+        }
+      }
+    }
+    .router-env{
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: white;
+      font-size: 0;
+      .router-personal{
+        display: inline-block;
+        vertical-align: top;
+        .logout-icon{
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          background-image: url(assets/logout.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          vertical-align: middle;
+        }
+        .logout-text{
+          margin-left: 5px;
+          vertical-align: middle;
+          font-size: 14px;
+        }
+      }
+      .router-language{
+        display: inline-block;
+        margin-left: 32px;
+        vertical-align: top;
+        font-size: 0;
+        .chinese{
+          padding-right: 5px;
+          border-right: 1px solid white;
+          font-size: 14px;
+        }
+        .english{
+          padding-left: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .router-content{
+    width: $width;
+    padding-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
