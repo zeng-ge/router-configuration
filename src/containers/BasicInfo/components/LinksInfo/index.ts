@@ -61,7 +61,7 @@ export default class LinksInfo{
       const field = deviceFields[index]
       ths.push(`<th>${field.text}</th>`)
     }
-    return '<thead><tr></tr></thead>'
+    return `<thead><tr>${ths.join('')}</tr></thead>`
   }
 
   generateDeviceRow(device: any): string{
