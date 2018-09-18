@@ -47,10 +47,21 @@
 @media only screen and (max-width: 1240px){
   .router-menu{
     font-size: 0;
+    padding-top: 2px;
     padding-bottom: 16px;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    position: relative;
+
+    &::after{
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid #63B0F8;
+    }
 
     &::-webkit-scrollbar {
       display: none;
