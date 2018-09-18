@@ -9,7 +9,7 @@ import fillHtml from 'rollup-plugin-fill-html'
 import cssnano from 'cssnano'
 
 const cssPlugins = [
-  autoprefixer({
+  autoprefixer({//postcss用它为样式加上--webkit--,--ms等前缀
     remove: false,
     browsers: [
       'last 5 versions',//支持最新的5个版本
@@ -37,10 +37,10 @@ export default {
         .process(css)
         .then(result => result.css)
     }),
-    copy([
+    copy([//将文件复制到build目录
       { files: 'src/assets/*.png', dest: 'build/assets'}
     ]),
-    fillHtml({
+    fillHtml({//将css与js注入html，会自动注，css在header, js在body
       template: 'src/index.html',
       target: 'build/index.html'
     })
