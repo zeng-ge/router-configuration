@@ -1,6 +1,7 @@
 import System from '../models/System'
 import Router from '../models/Router'
 import Device from '../models/Device'
+import { DeviceStatus } from '../constants/link'
 
 export default class BasicInfoService {
   getSystemInfo(): System{
@@ -24,6 +25,7 @@ export default class BasicInfoService {
   getDevices(): Array<Device>{
     return [
       {
+        status: DeviceStatus.ONLINE,
         name: 'auth-service Pod 1',
         ip: '255.255.255.0',
         mac: '9C-B7-93-00-A3-4C',
@@ -33,6 +35,7 @@ export default class BasicInfoService {
         distance: '2.5千米'
       } as Device,
       {
+        status: DeviceStatus.OFFLINE,
         name: 'auth-service Pod 2',
         ip: '/',
         mac: '7C-B7-93-00-A3-4D',
@@ -42,6 +45,7 @@ export default class BasicInfoService {
         distance: '/'
       } as Device,
       {
+        status: DeviceStatus.ONLINE,
         name: 'auth-service Pod 3',
         ip: '192.255.255.0',
         mac: '9C-B7-93-00-A3-4C',

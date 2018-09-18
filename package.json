@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "build:watch": "rollup -c --watch"
+    "build:watch": "rollup -c --watch",
+    "build:product": "ENV=production rollup -c"
   },
   "dependencies": {
     "jquery": "^3.3.1"
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@types/jquery": "^3.3.6",
     "autoprefixer": "^9.1.5",
+    "cssnano": "^4.1.0",
     "postcss": "^7.0.2",
     "rollup": "^0.66.0",
     "rollup-plugin-commonjs": "^9.1.6",

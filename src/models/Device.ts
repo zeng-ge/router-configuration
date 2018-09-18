@@ -1,3 +1,5 @@
+import { DeviceStatus } from '../constants/link'
+
 export default class Device{
   no: number
   name: string
@@ -7,4 +9,5 @@ export default class Device{
   receiveMcs: string
   rsl: string
   distance: string
+  status: DeviceStatus
 }

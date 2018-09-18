@@ -1,20 +1,21 @@
 import $ from 'jquery'
-import BasicInfo from '../BasicInfo/index'
+import BasicInfo from '../BasicInfo'
 import { menus } from '../../constants/menu'
 import './index.scss'
+import Menu from '../../components/Menu'
 
 const defaultMenu = menus[0]
 export default class Entry{
-  private basicInfo: BasicInfo
+  private component: any
   private element: JQuery
-  private menuElement: JQuery
+  private menu: Menu
+  private routerContainer: JQuery
   private contentElement: JQuery
-  private activeMenuItem: string = defaultMenu.name
+  private activeMenu: any = defaultMenu
   tpl: string = `
   <div class="router-wrap">
     <div class="router-header">
       <div class="router-container">
-        <ul class="router-menu"></ul>
         <div class="router-env">
           <div class="router-personal">
             <span class="logout-icon"></span>
@@ -33,51 +34,35 @@ export default class Entry{
   `
   constructor(){
     this.element = $(this.tpl)
-    this.basicInfo = new BasicInfo()
-    this.menuElement = this.element.find('.router-menu')
+    this.menu = new Menu(this.activeMenu, this.onSelectMenuItem)
+    this.routerContainer = this.element.find('.router-container')
     this.contentElement = this.element.find('.router-content')
-    this.bindEvents()
     this.render()
   }
 
-  onSelectMenu = (event: any) => {
-    const currentTarget = $(event.currentTarget)
-    const type = currentTarget.attr('type')
-    if (type !== this.activeMenuItem) {
-      this.activeMenuItem = type
-      this.updateActiveMenu()
-    }
+  onSelectMenuItem = (menu: any) => {
+    this.activeMenu = menu
+    this.renderComponent()
   }
 
-  bindEvents(){
-    this.menuElement.on('click', '.router-menu-item', this.onSelectMenu)
+  createComponent(){
+    const componentClass = this.activeMenu.component
+    return new componentClass()
   }
 
-  updateActiveMenu() {
-    const oldActiveMenuItem: JQuery = this.menuElement.find('.active')
-    oldActiveMenuItem.removeClass('active')
-
-    const activeItem: JQuery = this.menuElement.find(`[type=${this.activeMenuItem}]`)
-    activeItem.addClass('active')
+  renderComponent(){
+    this.component = this.createComponent()
+    this.contentElement.empty()
+    this.contentElement.append(this.component.render())
   }
 
   renderMenu() {
-    const lis = []
-    for(let index = 0, length = menus.length; index < length; index++) {
-      const menu = menus[index]
-      lis.push(`
-        <li type="${menu.name}" class="router-menu-item">
-          <div class="router-menu-item-content">${menu.text}</div>
-        </li>
-      `)
-    }
-    this.menuElement.append(lis.join(''))
+    this.routerContainer.prepend(this.menu.render())
   }
 
   render() {
     this.renderMenu()
-    this.updateActiveMenu()
-    this.contentElement.append(this.basicInfo.render())
+    this.renderComponent()
     $(document.body).append(this.element)
   }
 }

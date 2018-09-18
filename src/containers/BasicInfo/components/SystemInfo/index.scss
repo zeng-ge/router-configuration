@@ -1,6 +1,61 @@
-.system-info{
-  margin-bottom: 24px;
-  .system-icon{
-    background-image: url(assets/system.png);
+@media only screen and (min-width: 1240px) {
+  .system-info{
+    margin-bottom: 24px;
+    .system-icon{
+      background-image: url(assets/system.png);
+    }
+    .panel-body{
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+    .system-props{
+      font-size: 0;
+      .system-prop-item{
+        display: inline-block;
+        width: 33.33%;
+        padding-left: 100px;
+        padding-bottom: 16px;
+        font-size: 0;
+        .system-prop-item-name{
+          display: inline-block;
+          font-size: 14px;
+          color: #999999;
+        }
+        .system-prop-item-value{
+          display: inline-block;
+          margin-left: 12px;
+          font-size: 14px;
+          color: #333333;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .system-info{
+    margin-top: 16px;
+    margin-bottom: 40px;
+    .panel-body{
+      padding-top: 12px;
+    }
+    .system-props{
+      font-size: 0;
+      .system-prop-item{
+        padding-bottom: 8px;
+        font-size: 0;
+        .system-prop-item-name{
+          display: inline-block;
+          width: 70px;
+          font-size: 14px;
+          color: #666666;
+        }
+        .system-prop-item-value{
+          display: inline-block;
+          margin-left: 12px;
+          font-size: 14px;
+          color: #333333;
+        }
+      }
+    }
   }
 }

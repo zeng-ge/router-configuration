@@ -1,3 +1,8 @@
+export enum DeviceStatus{
+  ONLINE = 1,
+  OFFLINE = 0
+}
+
 export const routerFields = [
   { name: 'ssid', text: 'SSID' },
   { name: 'frequency', text: '工作频点' },
@@ -8,7 +13,12 @@ export const routerFields = [
 
 export const deviceFields = [
   { name: 'no', text: '序号' },
-  { name: 'name', text: '名称' },
+  { name: 'name', text: '名称', render: function(values: any){
+    const value = values['name']
+    const status = values['status']
+    const statusCls = status === DeviceStatus.ONLINE ? 'online' : 'offline'
+    return `<span class="circle ${statusCls}"></span><span>${value}</span>`
+  } },
   { name: 'ip', text: 'IP地址' },
   { name: 'mac', text: 'RT MAC' },
   { name: 'sendMcs', text: '发送MCS' },

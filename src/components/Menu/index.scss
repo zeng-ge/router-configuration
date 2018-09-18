@@ -1,0 +1,114 @@
+@media only screen and (min-width: 1240px) {
+  .router-menu{
+    font-size: 0;
+    .router-menu-item{
+      display: inline-block;
+      box-sizing: content-box;
+      width: 64px;
+      padding: 0 24px;
+      font-size: 14px;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+      &:first-child{
+        padding-left: 0;
+      }
+      &:last-child{
+        padding-right: 0;
+        .router-menu-item-content{
+          &::after{
+            content: none;
+          }
+        }
+      }
+      &.active{
+        .router-menu-item-content{
+          padding-bottom: 8px;
+          border-bottom-color: white;
+        }
+      }
+      .router-menu-item-content{
+        position: relative;
+        border-bottom: 3px solid transparent;
+        &::after{
+          content: '';
+          position: absolute;
+          top: 0;
+          right: -24px;
+          width: 1px;
+          height: 12px;
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1240px){
+  .router-menu{
+    font-size: 0;
+    padding-bottom: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .router-menu-item{
+      display: inline-block;
+      position: relative;
+      box-sizing: content-box;
+      font-size: 14px;
+      text-align: center;
+      color: #333333;
+      cursor: pointer;
+      vertical-align: top;
+
+      .router-menu-item-content{
+        position: relative;
+        padding-right: 16px;
+        font-size: 16px;
+        &::before{
+          content: '';
+          position: absolute;
+          width: 100%;
+          left: 0;
+          top: 30px;
+          border-bottom: 1px solid #63B0F8;
+        }
+      }
+
+      &.active{
+        &::before{
+          content: '';
+          position: absolute;
+          left: 21px;
+          top: 20px;
+          z-index: 1;
+          width: 23px;
+          height: 20px;
+          background-color: white;
+        }
+        &::after{
+          content: '';
+          position: absolute;
+          left: 20px;
+          top: 19px;
+          z-index: 2;
+          width: 24px;
+          height: 24px;
+          background-image: url(assets/arrow.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+        .router-menu-item-content{
+          position: relative;
+          color: #1C71C7;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

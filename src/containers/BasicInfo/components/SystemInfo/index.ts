@@ -36,7 +36,7 @@ export default class SystemInfo{
       const field = fields[index]
       items.push(`
         <div class="system-prop-item">
-          <div class="system-prop-item-name">${field.text}</div>
+          <div class="system-prop-item-name">${field.text}:</div>
           <div class="system-prop-item-value">${values[field.name]}</div>
         </div>
       `)
