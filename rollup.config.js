@@ -4,7 +4,8 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
 import scss from 'rollup-plugin-scss'
-import html from 'rollup-plugin-html'
+import copy from 'rollup-plugin-copy-glob'
+import fillHtml from 'rollup-plugin-fill-html'
 import cssnano from 'cssnano'
 
 const cssPlugins = [
@@ -27,9 +28,6 @@ export default {
     format: 'iife',
   },
   plugins: [
-    html({
-      include: '**/*.html'
-    }),
     typescript(),
     resolve(),
     commonjs(),
@@ -38,6 +36,13 @@ export default {
       processor: css => postcss(cssPlugins)
         .process(css)
         .then(result => result.css)
+    }),
+    copy([
+      { files: 'src/assets/*.png', dest: 'build/assets'}
+    ]),
+    fillHtml({
+      template: 'src/index.html',
+      target: 'build/index.html'
     })
   ]
 }
